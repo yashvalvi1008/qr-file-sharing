@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register • QR File Sharing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div>Create account</div>
+            <div class="tag">Register to upload</div>
+          </div>
+        </div>
+        <a class="pill" href="./login.html">Already have an account?</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h1>Get started</h1>
+          <p>Create an account to upload files and generate QR codes.</p>
+
+          <div class="uploadBox">
+            <div class="row">
+              <input id="email" type="email" placeholder="Email" autocomplete="email" />
+              <input id="password" type="password" placeholder="Password (min 8 chars)" autocomplete="new-password" />
+              <button id="registerBtn" class="btn">Register</button>
+            </div>
+            <div id="status" class="status"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>After registration</h2>
+          <p>You’ll be signed in automatically and redirected to the upload page.</p>
+          <a class="btn secondary" href="./login.html">Go to login</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./registerPage.js"></script>
+  </body>
+</html>
+

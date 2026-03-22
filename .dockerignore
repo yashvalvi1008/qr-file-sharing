@@ -1,0 +1,10 @@
+**/node_modules
+**/.git
+**/.env
+**/uploads
+**/.cursor
+**/terminals
+**/agent-transcripts
+Dockerfile
+docker-compose.yml
+README.md

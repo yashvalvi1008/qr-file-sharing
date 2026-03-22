@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download File • QR File Sharing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div>Download</div>
+            <div class="tag">Scan QR → Verify → Download</div>
+          </div>
+        </div>
+        <a class="pill" href="./index.html"><strong>←</strong> Upload</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h1>File details</h1>
+          <p>This page is opened from a QR code. If the file is still valid, you can download it safely.</p>
+
+          <div id="meta" class="status">Loading...</div>
+          <div class="row" style="margin-top:12px">
+            <button id="downloadBtn" class="btn" disabled>Download</button>
+            <button id="copyBtn" class="btn secondary" disabled>Copy download link</button>
+          </div>
+          <div class="mono" id="dlLink" style="margin-top:12px"></div>
+        </div>
+
+        <div class="card">
+          <h2>QR</h2>
+          <p>Need to rescan? Here’s the same link.</p>
+          <div class="qrWrap">
+            <img id="qrImg" class="qr" alt="QR code" />
+            <div class="mono" id="pageLink"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./downloadPage.js"></script>
+  </body>
+</html>
+

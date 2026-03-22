@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR File Sharing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div>QR File Sharing</div>
+            <div class="tag">Upload → QR → Scan → Download</div>
+          </div>
+        </div>
+        <div class="row" style="justify-content:flex-end">
+          <a class="pill pillNav" href="./download.html"><strong>↓</strong> Download page</a>
+          <a id="logoutBtn" class="pill pillNav" href="./login.html"><strong>⎋</strong> Logout</a>
+        </div>
+      </div>
+
+      <div class="stack">
+        <section class="screen">
+          <div class="screenInner">
+            <div class="grid" data-reveal>
+              <div class="card" data-reveal>
+                <h1>Share files instantly with a QR code</h1>
+                <p>
+                  Upload a file (max 100MB). We store it securely in the cloud and generate a QR code your friend can scan to
+                  download it.
+                </p>
+
+                <div class="uploadBox">
+                  <div class="row">
+                    <input id="fileInput" type="file" />
+                    <button id="uploadBtn" class="btn">Upload & Generate QR</button>
+                  </div>
+                  <div id="status" class="status"></div>
+                </div>
+
+                <div class="footer">
+                  Tip: For best results on mobile, open the QR in full screen and keep the brightness high.
+                </div>
+              </div>
+
+              <div class="card" data-reveal>
+                <h2>QR Code</h2>
+                <p>After uploading, your QR code will appear here.</p>
+
+                <div class="qrWrap">
+                  <img id="qrImg" class="qr" alt="QR code will appear after upload" />
+                  <div class="mono" id="linkBox"></div>
+                  <div class="row" style="width: 100%; justify-content: center">
+                    <button id="copyBtn" class="btn secondary" disabled>Copy Link</button>
+                    <a id="openBtn" class="btn secondary" href="#" target="_blank" rel="noreferrer" style="pointer-events:none;opacity:.6"
+                      >Open</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screenInner">
+            <div class="card" data-reveal>
+              <div class="ribbon">⚡ Problem statement</div>
+              <h2 style="margin-top:10px">File sharing is still weirdly painful in real life</h2>
+              <p>
+                In classrooms, labs, or group work, people often need to move a file quickly from one device to another. The
+                usual options are slow or awkward.
+              </p>
+
+              <div class="infoGrid" style="margin-top:10px">
+                <div class="infoPanel" data-reveal style="background: color-mix(in srgb, var(--orange) 18%, #fff)">
+                  <div class="infoTitle">🧨 What goes wrong</div>
+                  <ul class="infoList">
+                    <li><strong>Typing links</strong> on mobile is error-prone and wastes time.</li>
+                    <li><strong>Chat apps</strong> compress files, clutter groups, and lose important context.</li>
+                    <li><strong>“Drive-style” sharing</strong> needs accounts/permissions and isn’t instant.</li>
+                    <li><strong>USB/Bluetooth</strong> is inconsistent across devices and setups.</li>
+                  </ul>
+                </div>
+
+                <div class="infoPanel" data-reveal style="background: color-mix(in srgb, var(--blue) 14%, #fff)">
+                  <div class="infoTitle">🎯 What this app solves</div>
+                  <ul class="infoList">
+                    <li><strong>One upload</strong> creates a single shareable QR + link.</li>
+                    <li><strong>One scan</strong> opens a clean download page—no typing.</li>
+                    <li><strong>Controlled access</strong> through the server (expiry + tracking).</li>
+                    <li><strong>Works anywhere</strong> with a browser—no special app needed.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="footer" style="margin-top:14px">
+                Goal: make short‑term, in‑person file handoffs as fast as showing your screen.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen">
+          <div class="screenInner">
+            <div class="card" data-reveal>
+              <div class="ribbon">✦ About this website</div>
+              <h2 style="margin-top:10px">Why “Upload → QR → Scan → Download” works</h2>
+              <p>
+                This flow is built for quick, in-person sharing (classrooms, labs, group work) where typing links is slow and
+                error-prone.
+              </p>
+
+              <div class="infoGrid" style="margin-top:10px">
+                <div class="infoPanel" data-reveal>
+                  <div class="infoTitle">✅ Benefits</div>
+                  <ul class="infoList">
+                    <li><strong>Fast</strong>: share a file in seconds—scan beats typing.</li>
+                    <li><strong>Works across devices</strong>: any phone camera can open the download page.</li>
+                    <li><strong>Safer than “public links”</strong>: downloads go through the server so we can enforce rules.</li>
+                    <li><strong>Trackable</strong>: see how many times a file was downloaded.</li>
+                    <li><strong>Clean UX</strong>: one QR per upload, one page per file—no confusion.</li>
+                  </ul>
+                </div>
+
+                <div class="infoPanel" data-reveal>
+                  <div class="infoTitle">⚠️ Drawbacks (and how we handle them)</div>
+                  <ul class="infoList">
+                    <li><strong>Links can be shared further</strong> once someone has it → files expire automatically.</li>
+                    <li><strong>Storage cost</strong> for uploaded files → TTL cleanup reduces wasted storage.</li>
+                    <li><strong>Need internet</strong> to upload/download → optimized for real-time sharing, not offline transfer.</li>
+                    <li><strong>Access control</strong> matters for uploads → login is required to upload.</li>
+                    <li><strong>Large files</strong> take time → clear limits + progress messaging.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="footer" style="margin-top:14px">
+                Best for: notes, PDFs, assignments, images, and quick group handoffs. Not ideal for long-term archival.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script type="module" src="./authGuard.js"></script>
+    <script type="module" src="./uploadPage.js"></script>
+    <script type="module" src="./logoutButton.js"></script>
+    <script type="module" src="./scrollReveal.js"></script>
+  </body>
+</html>
+

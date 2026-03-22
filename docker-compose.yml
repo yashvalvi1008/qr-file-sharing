@@ -1,0 +1,39 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+      APP_BASE_URL: "http://localhost:4000"
+
+      # DB
+      MONGODB_URI: "mongodb://mongo:27017/qr_filesharing"
+      USE_IN_MEMORY_DB: "false"
+
+      # Auth (change in production)
+      JWT_SECRET: "change-me-super-secret"
+      JWT_EXPIRES_IN: "7d"
+
+      # Storage: local (no AWS needed for Docker)
+      STORAGE_PROVIDER: "local"
+      MAX_FILE_SIZE_MB: "100"
+      FILE_TTL_HOURS: "24"
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  mongo_data:
+  uploads:
